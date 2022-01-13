@@ -27,7 +27,7 @@ public class SetupTestUsers {
     User admin = new User("admin", "12345");
 
     WashingAssistant washingAssistant = new WashingAssistant(1L,"per","dansk",3,36);
-    Booking booking = new Booking(1L, LocalDateTime.now(),2);
+    //Booking booking = new Booking(1L, LocalDateTime.now(),2);
 
     // check if you can get username and password
     if(admin.getUserPass().equals("test")||user.getUserPass().equals("test"))
@@ -45,7 +45,7 @@ public class SetupTestUsers {
     em.persist(user);
     em.persist(admin);
     em.persist(washingAssistant);
-    em.persist(booking);
+    //em.persist(booking);
 
     // commit multiple transactions
     em.getTransaction().commit();
