@@ -3,7 +3,7 @@ package entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -18,7 +18,7 @@ public class Booking implements Serializable {
     private Long booking_id;
 
     @Column(name = "DateAndTime")
-    private Date dateAndTime;
+    private LocalDateTime dateAndTime;
 
     @Column(name = "Duration")
     private int duration;
@@ -32,7 +32,7 @@ public class Booking implements Serializable {
     public Booking() {
     }
 
-    public Booking(Long booking_id, Date dateAndTime, int duration) {
+    public Booking(Long booking_id, LocalDateTime dateAndTime, int duration) {
         this.booking_id = booking_id;
         this.dateAndTime = dateAndTime;
         this.duration = duration;
@@ -46,11 +46,11 @@ public class Booking implements Serializable {
         this.booking_id = booking_id;
     }
 
-    public Date getDateAndTime() {
+    public LocalDateTime getDateAndTime() {
         return dateAndTime;
     }
 
-    public void setDateAndTime(Date dateAndTime) {
+    public void setDateAndTime(LocalDateTime dateAndTime) {
         this.dateAndTime = dateAndTime;
     }
 

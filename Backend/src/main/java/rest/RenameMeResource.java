@@ -1,9 +1,12 @@
 package rest;
 
 import com.google.gson.Gson;
+import dtos.BookingDTO;
+import entities.Booking;
 import entities.User;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
@@ -16,6 +19,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
 
 import entities.WashingAssistant;
+import facades.MainFacade;
 import utils.EMF_Creator;
 
 /**
@@ -28,6 +32,7 @@ public class RenameMeResource {
     Gson gson = new Gson();
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
+    public static final MainFacade MAIN_FACADE = MainFacade.getMainFacade(EMF);
 
     @Context
     private UriInfo context;
@@ -92,7 +97,22 @@ public class RenameMeResource {
         List<WashingAssistant> result = query.getResultList();
         return result;
     }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("booking")
+    @RolesAllowed("user")
+    public List<Booking> ShowMyBooking() throws SQLException {
+        EntityManager em = EMF.createEntityManager();
+        TypedQuery <Booking> query = em.createQuery("SELECT b from Booking b", Booking.class);
+        List<Booking> result = query.getResultList();
+        return result;
+    }
+
     public void main(String[] args) throws Exception{
         ShowAllwashingassistant();
+        ShowMyBooking();
+
+
     }
 }

@@ -34,7 +34,12 @@ function Menu() {
                             <NavLink exact active className="active nav-link" to="#"></NavLink>
                         </li>
 
-                        
+                        <li className="nav-item">
+                            <NavLink exact active className="active nav-link btn btn-primary text-white" to="/booking">Booking</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink exact active className="active nav-link" to="#"></NavLink>
+                        </li>
 
                     </ul>
                     <form className="d-flex">
