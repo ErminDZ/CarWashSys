@@ -14,11 +14,15 @@ const WashingAssistant = () => {
 
     return (
         <div className="container mt-5">
-            <h2>List Of Owners</h2>
+            <h2>List Of Washing Assistant</h2>
             <table className="table mt-4">
                 <thead>
                 <tr>
                     <th>id</th>
+                    <th>name</th>
+                    <th>primary Language</th>
+                    <th>years of Experience</th>
+                    <th>price Pr. Hour</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,7 +32,7 @@ const WashingAssistant = () => {
                             <td>{washingassistant.id}</td>
                             <td>{washingassistant.name}</td>
                             <td>{washingassistant.primaryLanguage}</td>
-                            <td>{washingassistant.yearsofExperience}</td>
+                            <td>{washingassistant.yearsOfExperience}</td>
                             <td>{washingassistant.pricePrHour}</td>
 
                         </tr>

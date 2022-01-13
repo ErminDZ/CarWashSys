@@ -30,7 +30,7 @@ const Booking = () => {
                             <td>{booking.id}</td>
                             <td>{booking.dateAndTime}</td>
                             <td>{booking.duration}</td>
-
+                            
                         </tr>
                     ))
                 }

@@ -3,6 +3,7 @@ package entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -36,6 +37,7 @@ public class Car implements Serializable {
         this.brand = brand;
         this.make = make;
         this.year = year;
+        this.bookingList = new ArrayList<>();
     }
 
     public Long getRegistrationNumber() {
@@ -68,5 +70,13 @@ public class Car implements Serializable {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public List<Booking> getBookingList() {
+        return bookingList;
+    }
+
+    public void addBookingList(Booking booking) {
+        this.bookingList.add(booking);
     }
 }

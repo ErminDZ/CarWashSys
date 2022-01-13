@@ -22,6 +22,7 @@ import Home from "./Components/Home";
 import NoMatch from "./Components/NoMatch";
 import WashingAssistant from "./Components/WashingAssistant";
 import Booking from "./Components/Booking";
+import AddBooking from "./Components/AddBooking";
 
 
 
@@ -64,6 +65,9 @@ function App() {
                         </Route>
                         <Route exact path="/booking">
                             <Booking />
+                        </Route>
+                        <Route exact path="/AddBooking">
+                            <AddBooking />
                         </Route>
                         <NoMatch />
                     </Switch>
