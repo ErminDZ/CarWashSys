@@ -1,13 +1,9 @@
 package rest;
 
 import com.google.gson.Gson;
-import entities.Boat;
-import entities.Harbour;
-import entities.Owner;
 import entities.User;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
@@ -18,7 +14,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
-import javax.ws.rs.PathParam;
 
 import utils.EMF_Creator;
 
@@ -86,35 +81,4 @@ public class RenameMeResource {
         List<User> result = query.getResultList();
         return result;
     }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("owner")
-    public List<Owner> ShowAllOwners() throws SQLException {
-        EntityManager em = EMF.createEntityManager();
-        TypedQuery <Owner> query = em.createQuery("SELECT o from Owner o", entities.Owner.class);
-        List<Owner> result = query.getResultList();
-        return result;
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("harbour")
-    public List<Harbour> ShowHarbours() throws SQLException {
-        EntityManager em = EMF.createEntityManager();
-        TypedQuery <Harbour> query = em.createQuery("SELECT h from Harbour h", entities.Harbour.class);
-        List<Harbour> result = query.getResultList();
-        return result;
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("boat")
-    public List<Boat> ShowBoats() throws SQLException {
-        EntityManager em = EMF.createEntityManager();
-        TypedQuery <Boat> query = em.createQuery("SELECT b from Boat b", entities.Boat.class);
-        List<Boat> result = query.getResultList();
-        return result;
-    }
-
 }

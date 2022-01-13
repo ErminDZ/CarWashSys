@@ -21,15 +21,7 @@ function Menu () {
                     <li className="nav-item">
                         <NavLink exact active className="active nav-link" to="/">Home</NavLink>
                     </li>
-                    <li className="nav-item">
-                        <NavLink exact active className="active nav-link" to="/owners">Owners</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink exact active className="active nav-link" to="/specific-harbour">Specific Harbour</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink exact active className="active nav-link" to="/specific-boat">Specific Boat</NavLink>
-                    </li>
+
                 </ul>
                 <form className="d-flex">
                     <NavLink exact active className="active nav-link text-black" to="#">

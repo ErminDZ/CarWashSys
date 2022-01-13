@@ -18,9 +18,6 @@ import React, { useState,useEffect } from "react";
 import facade from "./ApiFacade";
 import Menu from "./Components/Menu";
 import Home from "./Components/Home";
-import Owners from "./Components/Owners";
-import SpecificHarbour from "./Components/SpecificHarbour";
-import SpecificBoat from "./Components/SpecificBoat";
 
 import NoMatch from "./Components/NoMatch";
 
@@ -60,15 +57,6 @@ function App() {
                          <Route exact path="/">
                          <Home />
                          </Route>
-                         <Route exact path="/owners">
-                            <Owners />
-                         </Route>
-                        <Route exact path="/specific-harbour">
-                            <SpecificHarbour />
-                        </Route>
-                        <Route exact path="/specific-boat">
-                            <SpecificBoat />
-                        </Route>
                         <NoMatch />
                     </Switch>
                 </div>
