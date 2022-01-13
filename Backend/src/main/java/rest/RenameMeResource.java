@@ -15,6 +15,7 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
 
+import entities.WashingAssistant;
 import utils.EMF_Creator;
 
 /**
@@ -80,5 +81,18 @@ public class RenameMeResource {
         TypedQuery <User> query = em.createQuery("SELECT u from User u", entities.User.class);
         List<User> result = query.getResultList();
         return result;
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("washingassistant")
+    public List<WashingAssistant> ShowAllwashingassistant() throws SQLException {
+        EntityManager em = EMF.createEntityManager();
+        TypedQuery <WashingAssistant> query = em.createQuery("SELECT wa from WashingAssistant wa", WashingAssistant.class);
+        List<WashingAssistant> result = query.getResultList();
+        return result;
+    }
+    public void main(String[] args) throws Exception{
+        ShowAllwashingassistant();
     }
 }

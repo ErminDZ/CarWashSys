@@ -20,6 +20,7 @@ import Menu from "./Components/Menu";
 import Home from "./Components/Home";
 
 import NoMatch from "./Components/NoMatch";
+import WashingAssistant from "./Components/WashingAssistant";
 
 
 
@@ -57,6 +58,9 @@ function App() {
                          <Route exact path="/">
                          <Home />
                          </Route>
+                        <Route exact path="/washingassistant">
+                            <WashingAssistant />
+                        </Route>
                         <NoMatch />
                     </Switch>
                 </div>

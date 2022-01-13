@@ -23,7 +23,7 @@ public class SetupTestUsers {
     User user = new User("user", "1234");
     User admin = new User("admin", "12345");
 
-
+    WashingAssistant washingAssistant = new WashingAssistant(1L,"per","dansk",3,36);
 
     // check if you can get username and password
     if(admin.getUserPass().equals("test")||user.getUserPass().equals("test"))
@@ -31,9 +31,6 @@ public class SetupTestUsers {
 
 
     em.getTransaction().begin();
-
-
-
     // adding user / admin roles
     Role userRole = new Role("user");
     Role adminRole = new Role("admin");
@@ -43,6 +40,7 @@ public class SetupTestUsers {
     em.persist(adminRole);
     em.persist(user);
     em.persist(admin);
+    em.persist(washingAssistant);
 
     // commit multiple transactions
     em.getTransaction().commit();

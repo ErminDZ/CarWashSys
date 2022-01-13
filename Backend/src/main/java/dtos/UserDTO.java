@@ -3,33 +3,25 @@ package dtos;
 import entities.User;
 
 public class UserDTO {
+    private String user_name;
 
-    private int id;
-    private String name;
-
-    public UserDTO(User u) {
-        this.id = u.getId();
-        this.name = u.getUserName();
+    public UserDTO(User P) {
+        this.user_name = P.getUserName();
     }
 
-    public UserDTO(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public UserDTO(String un) {
+        this.user_name = un;
     }
 
-    public int getId() {
-        return id;
+    public UserDTO() {}
+
+    public String getUser_name() {
+        return user_name;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }

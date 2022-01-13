@@ -11,15 +11,9 @@ import org.mindrot.jbcrypt.BCrypt;
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
-
   private static final long serialVersionUID = 1L;
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Basic(optional = false)
-  @NotNull
-  @Column(name = "id")
-  private int id;
 
+  @Id
   @Basic(optional = false)
   @NotNull
   @Column(name = "user_name", length = 25)
@@ -65,13 +59,6 @@ public class User implements Serializable {
     this.userPass = encrypt(userPass);
   }
 
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
 
   public String getUserName() {
     return userName;
