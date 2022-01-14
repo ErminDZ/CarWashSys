@@ -12,7 +12,6 @@ import entities.RenameMe;
 import utils.EMF_Creator;
 
 /**
- *
  * Rename Class to a relevant name Add add relevant facade methods
  */
 public class FacadeExample {
@@ -21,11 +20,11 @@ public class FacadeExample {
     private static EntityManagerFactory emf;
 
     //Private Constructor to ensure Singleton
-    private FacadeExample() {}
+    private FacadeExample() {
+    }
 
 
     /**
-     *
      * @param _emf
      * @return an instance of this facade class.
      */
@@ -41,7 +40,7 @@ public class FacadeExample {
         return emf.createEntityManager();
     }
 
-    public RenameMeDTO create(RenameMeDTO rm){
+    public RenameMeDTO create(RenameMeDTO rm) {
         RenameMe rme = new RenameMe(rm.getDummyStr1(), rm.getDummyStr2());
         EntityManager em = getEntityManager();
         try {
@@ -53,6 +52,7 @@ public class FacadeExample {
         }
         return new RenameMeDTO(rme);
     }
+
     public RenameMeDTO getById(long id) { //throws RenameMeNotFoundException {
         EntityManager em = emf.createEntityManager();
         RenameMe rm = em.find(RenameMe.class, id);
@@ -62,17 +62,17 @@ public class FacadeExample {
     }
 
     //TODO Remove/Change this before use
-    public long getRenameMeCount(){
+    public long getRenameMeCount() {
         EntityManager em = getEntityManager();
-        try{
-            long renameMeCount = (long)em.createQuery("SELECT COUNT(r) FROM RenameMe r").getSingleResult();
+        try {
+            long renameMeCount = (long) em.createQuery("SELECT COUNT(r) FROM RenameMe r").getSingleResult();
             return renameMeCount;
-        }finally{
+        } finally {
             em.close();
         }
     }
 
-    public List<RenameMeDTO> getAll(){
+    public List<RenameMeDTO> getAll() {
         EntityManager em = emf.createEntityManager();
         TypedQuery<RenameMe> query = em.createQuery("SELECT r FROM RenameMe r", RenameMe.class);
         List<RenameMe> rms = query.getResultList();
@@ -82,7 +82,7 @@ public class FacadeExample {
     public static void main(String[] args) {
         emf = EMF_Creator.createEntityManagerFactory();
         FacadeExample fe = getFacadeExample(emf);
-        fe.getAll().forEach(dto->System.out.println(dto));
+        fe.getAll().forEach(dto -> System.out.println(dto));
     }
 
 }

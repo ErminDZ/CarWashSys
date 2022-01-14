@@ -29,8 +29,8 @@ public class MainFacade {
         return instance;
     }
 
-    public BookingDTO createBooking(BookingDTO bDTO){
-        Booking booking = new Booking(bDTO.getDateAndTime(),bDTO.getDuration());
+    public BookingDTO createBooking(BookingDTO bDTO) {
+        Booking booking = new Booking(bDTO.getDateAndTime(), bDTO.getDuration());
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();

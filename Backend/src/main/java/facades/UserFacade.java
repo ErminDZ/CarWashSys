@@ -1,8 +1,10 @@
 package facades;
 
 import entities.User;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+
 import security.errorhandling.AuthenticationException;
 
 /**
@@ -17,7 +19,6 @@ public class UserFacade {
     }
 
     /**
-     *
      * @param _emf
      * @return the instance of this facade.
      */
