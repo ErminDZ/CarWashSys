@@ -14,7 +14,7 @@ const Booking = () => {
 
     return (
         <div className="container mt-5">
-            <h2>List Of Owners</h2>
+            <h2>List Of Bookings</h2>
             <table className="table mt-4">
                 <thead>
                 <tr>
@@ -30,7 +30,7 @@ const Booking = () => {
                             <td>{booking.id}</td>
                             <td>{booking.dateAndTime}</td>
                             <td>{booking.duration}</td>
-                            
+
                         </tr>
                     ))
                 }
