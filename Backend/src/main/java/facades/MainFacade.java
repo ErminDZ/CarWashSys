@@ -1,10 +1,14 @@
 package facades;
 
 import dtos.BookingDTO;
-import entities.Booking;
+import dtos.BookingWaDTO;
+import dtos.RenameMeDTO;
+import dtos.WashingAssistantDTO;
+import entities.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import java.awt.print.Book;
 
 public class MainFacade {
     private static EntityManagerFactory emf;
@@ -14,7 +18,6 @@ public class MainFacade {
     }
 
     /**
-     *
      * @param _emf
      * @return the instance of this facade.
      */
@@ -26,9 +29,22 @@ public class MainFacade {
         return instance;
     }
 
-    public BookingDTO getBookingById(long id) {
-        EntityManager em = emf.createEntityManager();
-        Booking booking = em.find(Booking.class, id);
+    public BookingDTO createBooking(BookingDTO bDTO){
+        Booking booking = new Booking(bDTO.getDateAndTime(),bDTO.getDuration());
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(booking);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
         return new BookingDTO(booking);
     }
+
+    private EntityManager getEntityManager() {
+        return emf.createEntityManager();
+    }
 }
+
+

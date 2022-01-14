@@ -2,11 +2,11 @@ package rest;
 
 import com.google.gson.Gson;
 import dtos.BookingDTO;
+import dtos.BookingWaDTO;
 import entities.Booking;
 import entities.User;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
@@ -109,10 +109,20 @@ public class RenameMeResource {
         return result;
     }
 
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("AddBooking")
+    public String createBooking(String jsonString) throws SQLException {
+        BookingDTO bDTO = gson.fromJson(jsonString, BookingDTO.class);
+        MAIN_FACADE.createBooking(bDTO);
+        return "{}";
+    }
+
+
     public void main(String[] args) throws Exception{
         ShowAllwashingassistant();
         ShowMyBooking();
-
-
+        createBooking("hej");
     }
 }
