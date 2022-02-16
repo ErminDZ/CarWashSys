@@ -82,4 +82,12 @@ public class WashingAssistant implements Serializable {
     public void setPricePrHour(int pricePrHour) {
         PricePrHour = pricePrHour;
     }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void addBookings(Booking booking) {
+        this.bookings.add(booking);
+    }
 }

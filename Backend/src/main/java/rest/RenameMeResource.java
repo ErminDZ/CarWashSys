@@ -2,11 +2,11 @@ package rest;
 
 import com.google.gson.Gson;
 import dtos.BookingDTO;
+import dtos.BookingWaDTO;
 import entities.Booking;
 import entities.User;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
@@ -54,7 +54,7 @@ public class RenameMeResource {
 
         EntityManager em = EMF.createEntityManager();
         try {
-            TypedQuery<User> query = em.createQuery ("select u from User u",entities.User.class);
+            TypedQuery<User> query = em.createQuery("select u from User u", entities.User.class);
             List<User> users = query.getResultList();
             return "[" + users.size() + "]";
         } finally {
@@ -83,7 +83,7 @@ public class RenameMeResource {
     @Path("user")
     public List<User> ShowAllUsers() throws SQLException {
         EntityManager em = EMF.createEntityManager();
-        TypedQuery <User> query = em.createQuery("SELECT u from User u", entities.User.class);
+        TypedQuery<User> query = em.createQuery("SELECT u from User u", entities.User.class);
         List<User> result = query.getResultList();
         return result;
     }
@@ -93,7 +93,7 @@ public class RenameMeResource {
     @Path("washingassistant")
     public List<WashingAssistant> ShowAllwashingassistant() throws SQLException {
         EntityManager em = EMF.createEntityManager();
-        TypedQuery <WashingAssistant> query = em.createQuery("SELECT wa from WashingAssistant wa", WashingAssistant.class);
+        TypedQuery<WashingAssistant> query = em.createQuery("SELECT wa from WashingAssistant wa", WashingAssistant.class);
         List<WashingAssistant> result = query.getResultList();
         return result;
     }
@@ -104,15 +104,25 @@ public class RenameMeResource {
     @RolesAllowed("user")
     public List<Booking> ShowMyBooking() throws SQLException {
         EntityManager em = EMF.createEntityManager();
-        TypedQuery <Booking> query = em.createQuery("SELECT b from Booking b", Booking.class);
+        TypedQuery<Booking> query = em.createQuery("SELECT b from Booking b", Booking.class);
         List<Booking> result = query.getResultList();
         return result;
     }
 
-    public void main(String[] args) throws Exception{
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("AddBooking")
+    public String createBooking(String jsonString) throws SQLException {
+        BookingDTO bDTO = gson.fromJson(jsonString, BookingDTO.class);
+        MAIN_FACADE.createBooking(bDTO);
+        return "{}";
+    }
+
+
+    public void main(String[] args) throws Exception {
         ShowAllwashingassistant();
         ShowMyBooking();
-
-
+        createBooking("hej");
     }
 }

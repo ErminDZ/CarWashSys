@@ -32,8 +32,14 @@ public class Booking implements Serializable {
     public Booking() {
     }
 
-    public Booking(Long booking_id, LocalDateTime dateAndTime, int duration) {
+    public Booking(Long booking_id, LocalDateTime dateAndTime, int duration, Car car) {
         this.booking_id = booking_id;
+        this.dateAndTime = dateAndTime;
+        this.duration = duration;
+        this.car = car;
+    }
+
+    public Booking(LocalDateTime dateAndTime, int duration) {
         this.dateAndTime = dateAndTime;
         this.duration = duration;
     }
@@ -60,5 +66,21 @@ public class Booking implements Serializable {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
+    public List<WashingAssistant> getWashingAssistants() {
+        return washingAssistants;
+    }
+
+    public void addWashingAssistants(WashingAssistant washingAssistant) {
+        this.washingAssistants.add(washingAssistant);
     }
 }

@@ -13,7 +13,8 @@ public class UserDTO {
         this.user_name = un;
     }
 
-    public UserDTO() {}
+    public UserDTO() {
+    }
 
     public String getUser_name() {
         return user_name;
